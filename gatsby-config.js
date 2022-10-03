@@ -12,6 +12,7 @@ module.exports = {
         name: `blag`,
         path: `${__dirname}/blag`
       }
-    }
+    },
+    "gatsby-plugin-mdx"
   ],
 }

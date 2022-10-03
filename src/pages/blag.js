@@ -8,24 +8,20 @@ const BlagPage = ({data}) => {
     return(
         <Layout pageTitle="blag posts">
             {
-                data.allFile.nodes.length === 0 ? 
+                data.allMdx.nodes.length === 0 ? 
                 (
                     <div>
                         <p>Here's where I'd put my blag posts...</p>
                         <StaticImage src="../images/angry_man.jpg" />
                     </div>
                 ) :
-                (
-                    <ul>
-                    {
-                        data.allFile.nodes.map(node => (
-                            <li key={node.name}>
-                                {node.name}
-                            </li>
-                        ))
-                    }
-                    </ul>
-                )
+                data.allMdx.nodes.map(node => (
+                    <article key={node.id}>
+                        <h2>{node.frontmatter.title}</h2>
+                        <p><i>by {node.frontmatter.author}</i></p>
+                        <p>{node.excerpt}</p>
+                    </article>
+                ))
             }
         </Layout>
     )
@@ -33,12 +29,18 @@ const BlagPage = ({data}) => {
 
 export const query = graphql`
   query {
-    allFile {
+    allMdx(sort: {fields: frontmatter___number}) {
       nodes {
-        name
+        frontmatter {
+          author
+          title
+        }
+        id
+        excerpt
       }
     }
   }
+  
 `
 
 export const Head = () => <CustomTitle title="Blag" />
