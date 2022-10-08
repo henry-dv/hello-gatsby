@@ -18,7 +18,7 @@ const BlagPage = ({ data }) => {
           data.allMdx.nodes.map(node => (
             <article>
               <h2>
-                <Link to={`blag/${node.frontmatter.slug}`}>
+                <Link to={`${node.frontmatter.slug}`}>
                   {node.frontmatter.title}
                 </Link>
               </h2>

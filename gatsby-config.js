@@ -13,6 +13,7 @@ module.exports = {
         path: `${__dirname}/blag`
       }
     },
-    "gatsby-plugin-mdx"
+    "gatsby-plugin-mdx",
+    "gatsby-transformer-sharp"
   ],
 }
